@@ -1,2 +1,2 @@
 # WeChatSpider
-Crawl articles from WeChat Subscriptions with Python
+Crawl articles from WeChat Subscriptions with Python.
