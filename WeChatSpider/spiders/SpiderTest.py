@@ -39,13 +39,17 @@ class WeChatSpider(scrapy.Spider):
         account = response.xpath('//div/p[contains(@class, "profile_account")]/text()')[0].extract().strip()
         print(nickname)
         print(account)
-        msgJson = response.xpath('/html/body/script[4]/text()')[0].re(r'var msgList = \'(.*)\'')[0]
+
+        msgJson = response.xpath('/html/body/script[5]/text()')[0].re(r'var msgList = \'(.*)\'')[0]
         articles = json.loads(msgJson)['list']
+        allTitles = ""
         for article in articles:
             appinfo = article['app_msg_ext_info']
             cominfo = article['comm_msg_info']
             url = "http://mp.weixin.qq.com/s?" + html.unescape(html.unescape(appinfo['content_url'][4:]))
-            print(url.strip())
+            allTitles = allTitles + html.unescape(html.unescape(appinfo['title'])).encode("GBK", 'ignore').decode("GBK", 'ignore') + "\n" + url.strip() + "\n\n"
+
+        self.my_print(allTitles)
 
     def my_print(self, str):
         filename = 'output/start_urls' + datetime.datetime.now().strftime("%Y%m%d%H%M%S%f") + '.txt'
