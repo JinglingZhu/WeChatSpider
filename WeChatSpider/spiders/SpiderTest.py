@@ -8,8 +8,8 @@ import json
 import html
 
 
-class WechatSpider(scrapy.Spider):
-    name = "WechatSpider"
+class WeChatSpider(scrapy.Spider):
+    name = "WeChatSpider"
     allowed_domains = ["qq.com"]
     article_infos = {}
     '''

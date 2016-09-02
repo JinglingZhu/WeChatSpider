@@ -8,7 +8,7 @@
 import scrapy
 
 
-class WechatSpiderItem(scrapy.Item):
+class WeChatSpiderItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
